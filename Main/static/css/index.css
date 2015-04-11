@@ -1,0 +1,119 @@
+body{
+	background:-moz-linear-gradient(top,#333,#fff);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	text-decoration: none;
+}
+
+
+
+/*topBar*/
+/*#topBar{
+	width:100%;
+	height:60px;
+	background-color: #fff;
+}*/
+#topBar{
+	width:40px;
+	height:40px;
+	background-color: #fff;
+	border-radius:90px;
+	margin:0 auto;
+}
+#topBar:hover{
+	width:42px;
+	height:42px;
+}
+#icon{
+	position: absolute;
+	top:40%;
+	left:45%;
+	opacity: 0;
+}
+#icon img{
+}
+#topBar a{
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 40px;
+	position: absolute;
+	opacity: 0;
+}
+/*leftBar*/
+
+#leftBar img{
+	width:30%;
+	position: absolute;
+	left:20%;
+	top:28%;
+	opacity: 0;
+}
+/*rightBar*/
+#rightBar{
+	padding:20px;
+	width:50%;
+	height:80%;
+	position: absolute;
+	top:60px;
+	left:40%;
+	opacity: 0;
+}
+#rightBar h1{
+	color: #fff;
+	width:80%;
+	margin:0 auto;
+	font-size: 350%;
+	position: absolute;
+	top:10%;
+	left:20%;
+}
+#rightBar p{
+	color: #fff;
+	width: 80%;
+	position: absolute;
+	top:30%;
+	left:10%;
+	font-size: 150%;
+}
+#signIn{
+	width: 20%;
+	position: absolute;
+	top:70%;
+	left:20%;
+
+}
+#signUp{
+	width: 20%;
+	position: absolute;
+	top:70%;
+	left:55%;
+
+}
+
+/*copyRight*/
+#copyRight{
+	position: absolute;
+	bottom:0px;
+	width:100%;
+	height:30px;
+	display: none;
+}
+#copyRight p{
+	position: absolute;
+	left:30%;
+}
+
+/*modal*/
+form{
+	padding: 10px;
+}
+form label{
+	font-size: 20px;
+}
+.form-group a{
+	text-decoration: none;
+}
+#submit{
+	margin-top: 20px;
+}
