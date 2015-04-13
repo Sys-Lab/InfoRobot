@@ -6,19 +6,21 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <!-- 上一行针对移动浏览器的适配 -->
 	<title>InfoRobot!</title>
-	<link rel="stylesheet" type="text/css" href="static/libs/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="static/cyh/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="static/css/index.css">
-	<script type="text/javascript" src="static/libs/jquery/dist/jquery.min.js"></script>
-	<script type="text/javascript" src="static/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="static/libs/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="static/cyh/jquery.1.10.2.js"></script>
+	<script type="text/javascript" src="static/cyh/bootstrap.min.js"></script>
+    <script type="text/javascript" src="static/cyh/jquery.easing.1.3.js"></script>
+
+
 </head>
 <body>
     <div id="startBar">
     </div>
     <div id="topBar">
         <div id="icon">
-        <img src="images/robot.png" >
-        <a href="index.html">InfoRobot</a>
+        <img src="static/images/robot.png" >
+        <a href="static/index.html">InfoRobot</a>
         </div>
     	<!-- icon info robot -->
     </div>
@@ -26,17 +28,21 @@
 
     <div id="leftBar">
     	<!-- img-macbookair -->
-    	<img src="images/macbook.png">
+    	<img src="static/images/macbook.png">
     </div>
 
     <div id="rightBar">
     	<!-- Manage your life -->
+        <div class="message">
     	<h1>Manage your life</h1>
     	<p>
     		Info robot is your ultimate servant fot your life. Just tell the robot what you want. Your robot will provide any information for you, such as shopping, traveling, financial, health, investment, sports, entertainment and legal assistance.
     	</p>
+        </div>
+        
     	<button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal" id="signIn">Sign in</button>
-    	<button class="btn btn-lg btn-success" id="signUp" onclick="window.open('https://1.cyhwill.sinaapp.com/');">Sign up</button>
+    	<button class="btn btn-lg btn-success" id="signUp" onclick="window.open('signup.html');">Sign up</button>
+        
     </div>
 
     <div id="copyRight">
