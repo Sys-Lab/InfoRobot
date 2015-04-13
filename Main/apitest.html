@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <title>APITest</title>
+    <script type="text/javascript" src="static/libs/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="static/js/API.js"></script>
+    <script>
+        $(function(){
+            $("#test").on('click', function (event) {
+               api.user.test(
+                       $("#name").val(),
+                       $("#pass").val(),
+                       function(result){
+                           $("#result").text(result);
+                       }
+               );
+            });
+        });
+    </script>
+</head>
+<body>
+<input id="name" type="text" placeholder="name"/>
+<input id="pass" type="text" placeholder="pass"/>
+<button id="test">测试</button>
+<div id="result">这里是结果</div>
+</body>
+</html>

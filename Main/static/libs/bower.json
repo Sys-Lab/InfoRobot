@@ -1,0 +1,11 @@
+{
+  "name": "InfoRobot",
+  "description": "",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Sys-Lab/InfoRobot",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "jquery": "~1.11.2"
+  }
+}
