@@ -1,0 +1,11 @@
+<div class="col-md-8">
+    <div>
+        <button class="visible-xs-block visible-sm-block" id="menu-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">菜单</button>
+    </div>
+    <ul id="right-ul" class="list-group mylist" ng-keyup="enter($event)">
+        <li ng-repeat="task in taskList" class="list-group-item" id="{{task.id}}">
+            <div contenteditable="true" class="title">{{task.title}}</div>
+        </li>
+    </ul>
+</div>
+<button ng-click="addNewTask()">添加</button>

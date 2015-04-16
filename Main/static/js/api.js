@@ -28,5 +28,21 @@ var api =
 
         }
     },
-    "task": {}
+    "task": {},
+    "test":{
+        "getTaskList":function(date,callback){
+            $.get(API_ROOT+"test.php",
+                {
+                "date":date
+                },
+                function (data,status) {
+                    if(status=="success"){
+                        callback(eval(data));
+                    }
+                    else
+                        callback({"error":1,"message":"Connection failed."});
+                });
+
+        }
+    }
 };
