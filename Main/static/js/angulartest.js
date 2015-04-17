@@ -53,7 +53,7 @@ irControllers.controller('completedTaskCtrl', function ($scope) {
 
 function del(id) {
     console.log(id);
-    $taskListScope = angular.element($('#right-ul')).scope();
+    $taskListScope = angular.element('#right-ul').scope();
     for (index = 0; index < $taskListScope.taskList.length; index++) {
         console.log($taskListScope.taskList[index]);
         if ($taskListScope.taskList[index].id == id) {

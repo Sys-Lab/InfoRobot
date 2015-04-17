@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="irApp">
+<head>
+    <meta charset="UTF-8">
+    <title>InfoRobot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="static/images/favicon.ico" rel="icon" type="image/x-icon"/>
+    <link rel="stylesheet" href="static/libs/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="static/css/main.css"/>
+    <script type="text/javascript" src="static/libs/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="static/libs/jquery-ui/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="static/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="static/libs/angular/angular.min.js"></script>
+    <script type="text/javascript" src="static/libs/angular-route/angular-route.min.js"></script>
+
+    <script type="text/javascript" src="static/js/api.js"></script>
+    <script type="text/javascript" src="static/js/app.js"></script>
+    <script type="text/javascript" src="static/js/controllers.js"></script>
+</head>
+<body>
+<div class="main">
+        <div id="left-view">
+            <div class="brand">
+                <a href="../main/index.html">
+                    <img src="static/images/brand-inverse.png" alt="InfoRobot"/>
+                </a>
+            </div>
+            <div class="list">
+                <ul class="date-list">
+                    <li>
+                        <a href="#/list/today">Today</a>
+                    </li>
+                    <li>
+                        <a href="#/list/tomorrow">Tomorrow</a>
+                    </li>
+                    <li>
+                        <a href="#/list/upcoming">Upcoming</a>
+                    </li>
+                </ul>
+                <ul class="completed-list">
+                    <li>
+                        <a href="#/completed">Completed</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="toolbar">
+                <div class="account">
+                    <img class="avatar img-circle" src="static/images/robot.png" alt="avatar"/>
+                    <span class="name">Account</span>
+                </div>
+            </div>
+        </div>
+        <div id="right-view" ng-view>我一会</div>
+</div>
+</body>
+</html>

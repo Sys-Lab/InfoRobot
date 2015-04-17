@@ -9,3 +9,19 @@
     </ul>
 </div>
 <button ng-click="addNewTask()">添加</button>
+<script type="text/javascript">
+        $('#right-ul').sortable({
+            cursor: "move",
+            cancel:".title"
+        });
+        $('li','#left-ul').droppable({
+            hoverClass:'hover',
+            drop:function(event,ui){
+                del(ui.draggable.attr('id'));
+            },
+            tolerance:'pointer'
+        });
+        $('#menu-toggle').click(function(){
+            $('#left-view').slideToggle().removeClass('visible-lg-block');
+        });
+</script>

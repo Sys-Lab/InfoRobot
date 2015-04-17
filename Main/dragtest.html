@@ -25,29 +25,7 @@
             display:none;
         }
     </style>
-    <script type="text/javascript">
-        $(function(){
-            $('#right-ul').sortable({
-                cursor: "move",
-                cancel:".title"
-            });
-            $('li','#right-ul').draggable({
-                helper: function(event) {
-                    return $("<div class='ui-widget-header'>I'm a custom helper</div>");
-                }
-            });
-            $('li','#left-ul').droppable({
-                hoverClass:'hover',
-                drop:function(event,ui){
-                    del(ui.draggable.attr('id'));
-                },
-                tolerance:'pointer'
-            });
-            $('#menu-toggle').click(function(){
-                $('#left-view').slideToggle().removeClass('visible-lg-block');
-            });
-        });
-    </script>
+
 </head>
 <body>
 <div class="row">
