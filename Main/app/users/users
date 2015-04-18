@@ -1,0 +1,93 @@
+<?php
+include_once('conn.php');
+include_once('input_validator.php')
+include_once('smtp.class.php')
+
+class users
+{
+	private $conn;
+	private $validator;
+	private $smtp;
+	
+	public function __construct()
+	{
+		$this->conn = new opmysql();
+		$this->validator = new InputValidator();
+		$this->smtp= new Smtp($smtpserver, $smtpserverport, true, $smtpuser, $smtppass);
+	}
+
+	public function createUser($username,$password,$email,$phone) {
+		$username = $this->validator->escape($username);
+		$email = $this->validator->escape($email);
+		$phone = $this->validator->escape($avatar);
+		$password = md5($password);
+		$status=0;
+		
+		if ($username=='' || $password=='' || $email==''||$phone=='') {
+			die('{"status":-1,"message":"Invalid input."}');
+		}
+		$sql = "SELECT * FROM 'users' WHERE 'username'='$username'");
+		if ($this->conn->getRowsNum($sql)) {
+			die('{"status":0,"message":"Username already exists."}');
+		}
+		$sql = "SELECT * FROM 'users' WHERE 'email'='$email'");
+		if ($this->conn->getRowsNum($sql)) {
+			die('{"status":0,"message":"E-mail already exists."}');
+		}
+		$sql = "SELECT * FROM 'users' WHERE 'phone'='$phone'");
+		if ($this->conn->getRowsNum($sql)) {
+			die('{"status":0,"message":"Phone already exists."}');
+		}
+
+		$regtime = time();
+        $token = md5($Name.$password.$Regtime); 
+        $token_exptime = time()+60*60*2;   //过期时间为2小时后
+
+		$sql="INSERT INTO 'users' ('username','password','email','phone','status','token','token_exptime') VALUES ('$username','$password','$email','$phone','$status','$token','$token_exptime')";
+		$result=$this->conn->mysql_query_rst($sql);
+		if($result)
+		{
+			echo '{"status":200,"message":"User created."}';
+			$this->sendemail();
+		}
+	}
+
+	private function sendemail(){
+		$smtpserver = "smtp.163.com";
+        $smtpserverport = 25; 
+        $smtpusermail = ""; 
+        $smtpuser = ""; 
+        $smtppass = ""; 
+        $emailtype = "HTML"; 
+        $smtpemailto = $Email;
+        $smtpemailfrom = $smtpusermail;
+        $emailsubject = "用户帐号激活";
+        $emailbody = $Name."：<br/>感谢您注册帐号。<br/>请点击链接激活您的帐号。<br/><a href='http://http://www.syslab.us/api_users.php?action=activate&verify=".$Token."' target='_blank'>http://www.syslab.us/api_users.php?action=activate&verify=".$Token."</a><br/>如果以上链接无法点击，请将它复制到你的浏览器地址栏中进入访问，该链接24小时内有效。<br/>如果此次激活请求非你本人所发，请忽略本邮件。<br/><p style='text-align:right'>-------- From Syslab</p>";
+        $rs = $this->smtp->sendmail($smtpemailto, $smtpemailfrom, $emailsubject, $emailbody, $emailtype);
+        if($rs==1){
+           $msg = 'Congratulation!<br/>You are supposed to activate your account in you e-mail in 2 hours~'; 
+        }
+        else{$msg = $rs; }
+        echo "$msg";
+	}
+
+	private function activate(){
+		$verify = stripslashes(trim($_GET['verify'])); 
+        $nowtime = time(); 
+ 
+        $query = $this->conn->mysql_query_rst("select id,Token_exptime from user where status='0' and  'Token'='$verify'"); 
+        $row = $this->conn->getRowsRst($query); 
+        if($row){ 
+        if($nowtime>$row['token_exptime']){ //2hour 
+        $msg = '您的激活有效期已过，请登录您的帐号重新发送激活邮件.'; 
+        }else{
+        	$this->conn->mysql_query_rst("update users set status=1 where id=".$row['id']); 
+            if($this->conn->uidRst($link)!=1) die(0); 
+            $msg = '激活成功！'; 
+        }
+        }else{ 
+        $msg = 'error.';     
+        } 
+        echo $msg;
+	}
+}
