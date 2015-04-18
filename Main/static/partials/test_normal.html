@@ -12,7 +12,11 @@
 <script type="text/javascript">
         $('#right-ul').sortable({
             cursor: "move",
-            cancel:".title"
+            cancel:".title",
+            update:function(event,ui){
+                console.log(ui.item.attr('id'));
+                console.log(ui.item.prev('li').attr('id'));
+            }
         });
         $('li','#left-ul').droppable({
             hoverClass:'hover',

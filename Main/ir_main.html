@@ -18,39 +18,69 @@
     <script type="text/javascript" src="static/js/controllers.js"></script>
 </head>
 <body>
-<div class="main">
-        <div id="left-view">
-            <div class="brand">
+<div class="container-fluid">
+    <div class="row">
+        <div id="left-view" class="col-md-2">
+            <div id="logo">
                 <a href="../main/index.html">
-                    <img src="static/images/brand-inverse.png" alt="InfoRobot"/>
+                    <img src="static/images/brand.png" alt="InfoRobot"/>
                 </a>
             </div>
-            <div class="list">
-                <ul class="date-list">
-                    <li>
-                        <a href="#/list/today">Today</a>
-                    </li>
-                    <li>
-                        <a href="#/list/tomorrow">Tomorrow</a>
-                    </li>
-                    <li>
-                        <a href="#/list/upcoming">Upcoming</a>
-                    </li>
+            <div id="list">
+                <ul id="date-list" class="nav nav-pills nav-stacked">
+                    <li data-id="0" role="presentation"><a class="" href="#/list/today">Today</a></li>
+                    <li data-id='1' role="presentation"><a class="" href="#/list/tomorrow">Tomorrow</a></li>
+                    <li data-id="2" role="presentation"><a class="" href="#/list/upcoming">Upcoming</a></li>
                 </ul>
-                <ul class="completed-list">
-                    <li>
-                        <a href="#/completed">Completed</a>
-                    </li>
+                <ul id="completed-list" class="nav nav-pills nav-stacked">
+                    <li data-id="3" role="presentation"><a class="" href="#/completed">Completed</a></li>
                 </ul>
             </div>
-            <div class="toolbar">
-                <div class="account">
-                    <img class="avatar img-circle" src="static/images/robot.png" alt="avatar"/>
-                    <span class="name">Account</span>
+            <div id="bottom" class="col-md-2">
+                <div id="clock">
+                    <script charset="Shift_JIS"
+                            src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_tr.js"></script>
                 </div>
+                <ul id="toolbar" class="nav nav-pills nav-stacked">
+                    <li role="presentation" class="dropup">
+                        <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">
+                            <img id="avatar" class="img-circle" src="static/images/robot.png" alt="avatar"/>
+                            <span id="name">Account</span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu2">
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="#">
+                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                    <span>Reset Password</span>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a id="signout" role="menuitem" tabindex="-1" href="#">
+                                    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                                    <span>Sign out</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div id="right-view" ng-view>我一会</div>
+        <div id="right-view" class="col-md-10 col-lg-offset-2" ng-view></div>
+    </div>
+</div>
+<div id="weather">
+    <div class="weather-title">
+        <span class="glyphicon glyphicon-cloud"></span>
+    </div>
+    <div class="weather-frame">
+        <iframe allowtransparency="true" frameborder="0" width="140" height="203" scrolling="no" src="http://tianqi.2345.com/plugin/widget/index.htm?s=1&z=1&t=0&v=1&d=2&bd=0&k=000000&f=&q=1&e=1&a=1&c=54511&w=140&h=203&align=center"></iframe>   </div>
+    <script>
+        /*天气的折叠*/
+        $('.weather-title').click(function(){
+            $('.weather-frame').toggle();
+        });
+    </script>
 </div>
 </body>
 </html>
