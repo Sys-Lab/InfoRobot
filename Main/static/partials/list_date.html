@@ -1,0 +1,34 @@
+<div id="titlebar" class="navbar navbar-static-top">
+    <ul class="nav navbar-nav">
+        <li>
+            <button type="button" id="collapsed" class="btn btn-default navbar-btn">
+                <span class="myicon"></span>
+                <span class="myicon"></span>
+                <span class="myicon_last"></span>
+            </button>
+        </li>
+        <li>
+            <h3 id="title" class="navbar-text">{{title}}</h3>
+        </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <button ng-click="removeAllCompletedTask($event)" type="button" id="clearTrash" class="btn btn-default navbar-btn">
+                <span class="glyphicon glyphicon-trash"></span>
+            </button>
+        </li>
+    </ul>
+</div>
+<div id="add-task">
+    <input type="text" ng-keypress="addNewTask($event)" class="form-control" id="add-input" placeholder="I want..."/>
+</div>
+<div id="task-list-wrap">
+    <ul id="task-list-date" class="list-group" ng-model="taskList">
+        <li ng-repeat="task in taskList" class="list-group-item {{task.flag}}" id="{{task.id}}">
+            <i ng-click="checkTask($event)" class="iconfont complete-icon">&#xe645;</i>
+            <span contenteditable="{{task.editable}}" ng-keyup="modifyTaskContent($event)" class="task-content">{{task.title}}</span>
+            <i ng-click="removeTask($event)" class="iconfont del-icon">&#xe658;</i>
+        </li>
+    </ul>
+</div>
+<script type="text/javascript" src="static/js/view.js"></script>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" ng-app="irApp">
+<head>
+    <meta charset="UTF-8">
+    <title>排序和拖拽测试| 侧边栏测试</title>
+    <link rel="stylesheet" href="static/libs/bootstrap/dist/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="static/libs/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="static/libs/jquery-ui/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="static/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="static/libs/angular/angular.min.js"></script>
+    <script type="text/javascript" src="static/libs/angular-route/angular-route.min.js"></script>
+
+    <script type="text/javascript" src="static/js/api.js"></script>
+    <script type="text/javascript" src="static/js/angulartest.js"></script>
+    <style>
+        .hover{
+            background-color: #2ea5c3;
+        }
+        .title{
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+        }
+        .title div{
+            display:none;
+        }
+    </style>
+
+</head>
+<body>
+<div class="row">
+    <div class="col-md-2 visible-lg-block" id="left-view">
+        <ul id="left-ul" class="list-group">
+            <li class="list-group-item">
+                <a href="#/todayList">今天</a>
+            </li>
+            <li class="list-group-item">明天</li>
+            <li class="list-group-item">即将</li>
+            <li class="list-group-item">
+                <a href="#/completedList">已完成</a>
+            </li>
+        </ul>
+    </div>
+    <div ng-view></div>
+</div>
+</body>
+</html>

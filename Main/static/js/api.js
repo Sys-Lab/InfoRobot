@@ -1,4 +1,6 @@
 /**
+ * 与后端交互的API
+ * 依赖jquery
  * Created by chao on 2015/4/11.
  */
 
@@ -20,7 +22,7 @@ var api =
                     if(status=="success")
                         callback(data);
                     else
-                        callback({"error":1,"message":"Connection failed."});
+                        callback({"code":0,"message":status});
                 });
         },
         "createUser": function ()
@@ -28,5 +30,79 @@ var api =
 
         }
     },
-    "task": {}
+    "task": {
+        "createTask":function(taskContent,date,flag,callback){
+            //TODO 具体路径
+            $.post(API_ROOT+"",
+                {
+                    "taskContent":taskContent,
+                    "date":date,
+                    "flag":flag
+                },
+            function(data,status){
+               if(status=="success"){
+                   callback(eval(data));
+               }else{
+                   callback({"code":0,"message":status});
+               }
+            });
+        },
+        "requireTaskList":function(date,callback){
+            //TODO 路径
+            $.get(API_ROOT+"",
+                {
+                    "date":date
+                },
+            function(data,status){
+                if(status=="success"){
+                    callback(eval(data));
+                }else{
+                    callback({"code":0,"message":status});
+                }
+            });
+        },
+        "deleteTask":function(id,callback){
+            $.post(API_ROOT+"",
+                {
+                    "id":id
+                },
+            function(data,status){
+                if(status=="success"){
+                    callback(eval(data));
+                }else{
+                    callback({"code":0,"message":status});
+                }
+            });
+        },
+        "changeOrder":function(id,order,callback){
+            $.post(API_ROOT+"",
+                {
+                    "id":id,
+                    "order":order
+                },
+            function(data,status){
+                if(status=="success"){
+                    callback(eval(data));
+                }else{
+                    callback({"code":0,"message":status});
+                }
+            });
+        }
+    },
+    "test":{
+        "getTaskList":function(date,callback){
+            $.get(API_ROOT+"test.php",
+                {
+                "date":date
+                },
+                function (data,status) {
+                    if(status=="success"){
+                        callback(eval(data));
+                    }
+                    else
+                        callback({"code":0,"message":status});
+                });
+
+        }
+    }
 };
