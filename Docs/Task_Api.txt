@@ -1,3 +1,5 @@
+API文档
+
 CreatTask():
 	//创建任务
 	传入参数：
@@ -11,7 +13,7 @@ CreatTask():
 		"id": 任务ID
 
 RequireTaskList():
-	//请求任务列表
+	//请求	任务列表
 	传入参数:
 		int date //日期 0 今天 1 明天 2 即将 3 已完成
 	Callback() 回调函数：
