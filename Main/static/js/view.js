@@ -14,23 +14,23 @@
     $('li','#date-list').droppable({
         hoverClass:'drop-hover',
         drop:function(event,ui){
-            var date=$(this).attr('data-id');
-            $scope.modifyTaskDate(ui.draggable.attr('id'),date);
+            var date=$(this).attr('data-day');
+            console.log($scope.dateNum);
+            if(date!=$scope.dateNum){
+                $scope.modifyTaskDate(ui.draggable.attr('id'),date);
+            }
         },
         tolerance:'pointer'
     });
-    $('#collapsed').click(function(){
-        $('#left-view').toggle(function(){
-                this.addClass('invisible-lg-block');
-        },
-        function(){
-
-        });
-        $('#right-view').toggle(function(){
-                this.removeClass('col-md-offset-2');
-        },
-        function(){
-            this.addClass('col-md-offset-2');
-        });
+    $('#collapsed').click(function() {
+        var $left=$('#left-view');
+        var $right=$('#right-view');
+        if($left.attr('class')=='my-2'){
+            $left.removeClass('my-2').hide();
+            $right.removeClass('my-offset-2').removeClass('my-10').addClass('my-12');
+        }else{
+            $left.addClass('my-2').show();
+            $right.addClass('my-offset-2').addClass('my-10').removeClass('my-12');
+        }
     });
 })();

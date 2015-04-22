@@ -23,21 +23,21 @@ irControllers.controller('dateTaskCtrl', function ($scope, $routeParams) {
 
     $scope.title = $routeParams.date.toUpperCase();
     $scope.taskList = [];
-    var date = 0;//日期 0 今天 1 明天 2 即将
+    $scope.dateNum = 0;//日期 0 今天 1 明天 2 即将
     switch ($routeParams.date) {
         case "today":
-            date = 0;
+            $scope.dateNum = 0;
             break;
         case "tomorrow":
-            date = 1;
+            $scope.dateNum = 1;
             break;
         case "upcoming":
-            date = 2;
+            $scope.dateNum = 2;
             break;
         default :
-            date = 0;
+            $scope.dateNum = 0;
     }
-    api.test.getTaskList(date, function (data) {
+    api.test.getTaskList($scope.dateNum, function (data) {
         //添加editable属性
         for (var index in data) {
             data[index].editable = (data[index].flag == "uncomplete");
@@ -52,7 +52,7 @@ irControllers.controller('dateTaskCtrl', function ($scope, $routeParams) {
             $taskInput.val('');
             if (content != "") {
                 console.log("addNewTask--" + content);
-                api.task.createTask(content, date, 0, function (data) {
+                api.task.createTask(content, $scope.dateNum, 0, function (data) {
                     $scope.taskList.push({"title": content, "id": data.id, "flag": "uncomplete", "editable": true});
                 });
             }
@@ -64,18 +64,18 @@ irControllers.controller('dateTaskCtrl', function ($scope, $routeParams) {
         if (item.flag == "complete") {
             item.flag = "uncomplete";
             item.editable = true;
+            api.task.uncheckTask(id,function(data){});
         } else {
             item.flag = "complete";
             item.editable = false;
+            api.task.checkTask(id, function (data) {});
         }
-
-        //TODO API相关接口
     };
     $scope.removeTask = function (event) {
         var id = $(event.target).parent().attr('id');
         var index = getArrayIndexById($scope.taskList, id);
         $scope.taskList.splice(index,1);
-        api.task.deleteTask(id,function(data){
+        api.task.removeTask(id,function(data){
             if(data.code==0){
                 alert(data);
             }
@@ -94,39 +94,50 @@ irControllers.controller('dateTaskCtrl', function ($scope, $routeParams) {
             if (item.title != content)isChange = true;
             if (isChange) {
                 console.log("content已被改变--" + content);
-                //TODO API
+                api.task.modifyTaskContent(id.content,function(data){});
             }
         }
     };
     $scope.modifyTaskOrder = function (preId,id) {
         console.log(preId+"\n"+id);
+        api.task.modifyTaskOrder(preId,id,function(data){});
     };
     $scope.modifyTaskDate = function (id,date) {
         var index=getArrayIndexById($scope.taskList,id);
         $scope.taskList.splice(index,1);
         $scope.$apply();
-        //TODO API
         console.log("id-"+id+"\n"+"date-"+date);
+        api.task.modifyTaskDate(id,date,function(data){});
     };
     $scope.removeAllCompletedTask = function () {
-        //TODO 直接从后端拿数据
+        console.log("移除所有已完成任务");
+        api.task.removeAllCompletedTask($scope.dateNum,function(data){
+            $scope.taskList=data.list;
+        });
     }
 });
 
 irControllers.controller('completedTaskCtrl', function ($scope) {
     $scope.title="COMPLETED";
     $scope.taskList=[];
-    api.task.requireTaskList(3,function(data){
+    api.test.getTaskList(3,function(data){
         $scope.taskList=data;
+        $scope.$apply();
     });
+    $scope.delTask=function(event){
+        var id = $(event.target).parent().attr('id');
+        var index = getArrayIndexById($scope.taskList, id);
+        $scope.taskList.splice(index,1);
+        api.task.delTask(id,function(data){});
+    };
     $scope.delAllTask=function(){
         $scope.taskList.splice(0,$scope.taskList.length);
-        //TODO API接口
+        api.task.delAllTask(function(data){});
     };
     $scope.uncheckTask=function(event){
         var id = $(event.target).parent().attr('id');
         var index = getArrayIndexById($scope.taskList, id);
         $scope.taskList.splice(index,1);
-        //TODO API接口
+        api.task.uncheckTask(id,function(data){});
     };
 });

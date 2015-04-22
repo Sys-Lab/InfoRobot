@@ -1,11 +1,11 @@
 <div id="titlebar" class="navbar navbar-static-top">
     <ul class="nav navbar-nav">
         <li>
-            <button type="button" id="collapsed" class="btn btn-default navbar-btn">
+            <a href="" type="button" id="collapsed" class="hidden-lg">
                 <span class="myicon"></span>
                 <span class="myicon"></span>
                 <span class="myicon_last"></span>
-            </button>
+            </a>
         </li>
         <li>
             <h3 id="title" class="navbar-text">{{title}}</h3>
@@ -13,9 +13,9 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <li>
-            <button ng-click="removeAllCompletedTask($event)" type="button" id="clearTrash" class="btn btn-default navbar-btn">
-                <span class="glyphicon glyphicon-trash"></span>
-            </button>
+            <a href="" ng-click="removeAllCompletedTask($event)" type="button" id="clearTrash">
+                <i class="iconfont clearAll">&#xe6b4;</i>
+            </a>
         </li>
     </ul>
 </div>
