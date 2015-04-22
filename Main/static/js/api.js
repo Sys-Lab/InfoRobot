@@ -6,10 +6,8 @@
 
 API_ROOT = "app/";
 
-var api =
-{
-    "user":
-    {
+var api = {
+    "user": {
         "test": function (name, password,callback)
         {
             $.post(API_ROOT+"test.php",
@@ -61,7 +59,7 @@ var api =
                 }
             });
         },
-        "deleteTask":function(id,callback){
+        "checkTask":function(id,callback){
             $.post(API_ROOT+"",
                 {
                     "id":id
@@ -74,13 +72,102 @@ var api =
                 }
             });
         },
-        "changeOrder":function(id,order,callback){
+        "uncheckTask":function(id,callback){
+            $.post(API_ROOT+"",
+                {
+                    "id":id
+                },
+                function(data,status){
+                    if(status=="success"){
+                        callback(eval(data));
+                    }else{
+                        callback({"code":0,"message":status});
+                    }
+                });
+        },
+        "removeTask":function(id,callback){
+            $.post(API_ROOT+"",
+                {
+                    "id":id
+                },
+            function(data,status){
+                if(status=="success"){
+                    callback(eval(data));
+                }else{
+                    callback({"code":0,"message":status});
+                }
+            });
+        },
+        "removeAllCompletedTask":function(date,callback){
+            $.get(API_ROOT+"",
+                {
+                    "date":date
+                },
+                function(data,status){
+                    if(status=="success"){
+                        callback(eval(data));
+                    }else{
+                        callback({"code":0,"message":status});
+                    }
+                });
+        },
+        "modifyTaskContent": function (id, content, callback) {
             $.post(API_ROOT+"",
                 {
                     "id":id,
-                    "order":order
+                    "content":content
                 },
-            function(data,status){
+                function(data,status){
+                    if(status=="success"){
+                        callback(eval(data));
+                    }else{
+                        callback({"code":0,"message":status});
+                    }
+                });
+        },
+        "modifyTaskOrder":function(preId,id,callback){
+            $.post(API_ROOT+"",
+                {
+                    "preId":preId,
+                    "id":id
+                },
+                function(data,status){
+                    if(status=="success"){
+                        callback(eval(data));
+                    }else{
+                        callback({"code":0,"message":status});
+                    }
+                });
+        },
+        "modifyTaskDate":function(id,date,callback){
+            $.post(API_ROOT+"",
+                {
+                    "id":id,
+                    "date":date
+                },
+                function(data,status){
+                    if(status=="success"){
+                        callback(eval(data));
+                    }else{
+                        callback({"code":0,"message":status});
+                    }
+                });
+        },
+        "delTask":function(id,callback){
+            $.post(API_ROOT+"",
+            {
+                "id":id
+            },
+          function(data,status){
+              if(status=="success"){
+                  callback(eval(data));
+              }else{
+                  callback({"code":0,"message":status});
+              }
+          });
+        },
+        "delAllTask":function(callback){
+            $.post(API_ROOT+"",{},function(data,status){
                 if(status=="success"){
                     callback(eval(data));
                 }else{

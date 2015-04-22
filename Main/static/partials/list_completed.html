@@ -1,11 +1,11 @@
 <div id="titlebar" class="navbar navbar-static-top">
     <ul class="nav navbar-nav">
         <li>
-            <button type="button" id="collapsed" class="btn btn-default navbar-btn">
+            <a href="" type="button" id="collapsed" class="hidden-lg">
                 <span class="myicon"></span>
                 <span class="myicon"></span>
                 <span class="myicon_last"></span>
-            </button>
+            </a>
         </li>
         <li>
             <h3 id="title" class="navbar-text">{{title}}</h3>
@@ -13,18 +13,19 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <li>
-            <button ng-click="delAllTask()" type="button" id="clearTrash" class="btn btn-default navbar-btn">
-                <span class="glyphicon glyphicon-trash"></span>
-            </button>
+            <a href="" ng-click="delAllTask()" type="button" id="clearTrash">
+                <i class="iconfont clearAll">&#xe6b4;</i>
+            </a>
         </li>
     </ul>
 </div>
 <div id="task-list-wrap">
     <ul id="task-list-completed" class="list-group">
         <li ng-repeat="task in taskList" class="list-group-item {{task.flag}}" id="{{task.id}}">
-            <i ng-click="checkTask($event)" class="iconfont complete-icon">&#xe645;</i>
-            <span contenteditable="{{task.editable}}" ng-keyup="modifyTaskContent($event)" class="task-content">{{task.title}}</span>
-            <i ng-click="removeTask($event)" class="iconfont del-icon">&#xe658;</i>
+            <i ng-click="uncheckTask($event)" class="iconfont complete-icon">&#xe645;</i>
+            <span class="task-content">{{task.title}}</span>
+            <i ng-click="delTask($event)" class="iconfont del-icon">&#xe658;</i>
         </li>
     </ul>
 </div>
+<script type="text/javascript" src="static/js/view.js"></script>
