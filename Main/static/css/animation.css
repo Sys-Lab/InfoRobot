@@ -1,0 +1,53 @@
+@keyframes slide{
+	0%{left:0px;}
+	16%{left: 0px;opacity: 1;}
+	20%{left: -500px;opacity: 0;}
+	21%{left:500px;opacity: 0;}
+	96%{left: 500px;opacity: 0;}
+	100%{left:0px;opacity: 1; }
+}
+@keyframes slideSecond{
+	0%{left:500px;}
+	16%{left: 500px;opacity: 0;}
+	20%{left: 0px;opacity: 1;}
+	36%{left:0px;opacity: 1;}
+	40%{left: -500px;opacity: 0;}
+	41%{left: 500px;opacity: 0;}
+	100%{left:500px;opacity: 0; }
+}
+@keyframes slideThird{
+	0%{left:500px;}
+	36%{left: 500px;opacity: 0;}
+	40%{left: 0px;opacity: 1;}
+	56%{left:0px;opacity: 1;}
+	60%{left: -500px;opacity: 0;}
+	61%{left: 500px;opacity: 0;}
+	100%{left:500px;opacity: 0; }
+}
+@keyframes slideFourth{
+	0%{left:500px;}
+	56%{left: 500px;opacity: 0;}
+	60%{left: 0px;opacity: 1;}
+	76%{left:0px;opacity: 1;}
+	80%{left: -500px;opacity: 0;}
+	81%{left: 500px;opacity: 0;}
+	100%{left:500px;opacity: 0; }
+}
+@keyframes slideFifth{
+	0%{left: -500px;opacity: 0;}
+	1%{left: 500px;opacity: 0;}
+	76%{left: 500px;opacity: 0;}
+	80%{left: 0px;opacity: 1;}
+	96%{left:0px;opacity: 1;}
+	100%{left: -500px;opacity: 0;}
+	
+}
+
+
+@keyframes expand{
+	0%,20%,40%,60%,80%,100%{width:0%;opacity: .3;}
+	19%,39%,59%,79%,99%{width:0%;opacity: 0;}
+	16%,36%,56%,76%,96%{width:96%;opacity: .8;}
+	17%,37%,57%,77%,97%{width:96%;opacity: .3;}
+	18%,38%,58%,78%,98%{width:96%;opacity: 00;}
+}

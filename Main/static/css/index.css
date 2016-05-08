@@ -1,3 +1,4 @@
+@import url('animation.css') screen;
 body{
 	background:-moz-linear-gradient(top,#000,#ccc);
 	/*firefox*/
@@ -8,12 +9,28 @@ body{
     FILTER: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#000', endColorstr='#ccc');
     /*for ie not 11*/
 	background-size: cover;
+	overflow: hidden;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	text-decoration: none;
 }
 
 
+/*startBar*/
+#startBar{
+	background-color: #fff;
+	position: absolute;
+	top:40%;
+	left:45%;
+	height:20%;
+	width: 9%;
+	border-radius: 90px;
+}
+#startBar h2{
+	position: absolute;
+	top:20%;
+	left:1%;
+}
 
 /*topBar*/
 /*#topBar{
@@ -22,20 +39,17 @@ body{
 	background-color: #fff;
 }*/
 #topBar{
-	width:40px;
-	height:40px;
+	width:0px;
+	height:0px;
 	background-color: #fff;
 	border-radius:90px;
 	margin:0 auto;
 }
-#topBar:hover{
-	width:42px;
-	height:42px;
-}
+
 #icon{
 	width:40%;
 	position: absolute;
-	top:40%;
+	top:20%;
 	left:45%;
 	opacity: 0;
 }
@@ -51,22 +65,112 @@ body{
 	opacity: 0;
 }
 /*leftBar*/
-
-#leftBar img{
-	width:30%;
-	position: absolute;
-	left:20%;
-	top:28%;
+#leftBar{
 	opacity: 0;
+	position: absolute;
+	top:120px;
+	left:-10%;
+}
+#leftBar img{
+	width:480px;
+	height:400px;
+}
+.container{
+	overflow:hidden;
+	width:500px;
+	background: #fff;
+	padding: 10px;
+	position: absolute;
+}
+#content{
+	background: #fff;
+	width:100%;
+	height:400px;
+	overflow: hidden;
+}
+#slider{
+	background:#000;
+	overflow: hidden;
+
+}
+#mask {
+	overflow:hidden;
+	height:100%;
+}
+#slider ul {
+	margin:0;
+	padding:0;
+	position:absolute;
+}
+#slider li {
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:-100%;
+	list-style:none;
+}
+#slideFirst{
+	position: absolute;
+	top:0px;
+	left:0px;
+}
+#slideSecond{
+	position: absolute;
+	top: 0px;
+	left:500px;
+}
+#slideThird{
+	position: absolute;
+	top: 0px;
+	left:500px;
+}
+#slideFourth{
+	position: absolute;
+	top: 0px;
+	left:500px;
+}
+#slideFifth{
+	position: absolute;
+	top: 0px;
+	left:500px;
+}
+#slider li.firstAnimation {
+	animation: slide 25s linear infinite;
+}
+#slider li.secondAnimation {
+	animation: slideSecond 25s linear infinite ;		
+}
+#slider li.thirdAnimation {
+    animation: slideThird 25s linear infinite ;		
+}
+#slider li.fourthAnimation {
+    animation: slideFourth 25s linear infinite ;			
+}
+#slider li.fifthAnimation {
+	animation: slideFifth 25s linear infinite ;		
+}
+#slider:hover li,#slider:hover #progressBar{
+	-moz-animation-play-state:paused;
+	-webkit-animation-play-state:paused;
+}
+
+#progressBar{ 
+	position:absolute;
+	top:405px;
+	width:500px; 
+	height:5px;
+	background:red;
+	animation:expand 25s ease-out infinite;
+	
 }
 /*rightBar*/
 #rightBar{
 	padding:20px;
 	width:50%;
-	height:80%;
+	height:600px;
 	position: absolute;
 	top:60px;
-	left:40%;
+	left:70%;
 	opacity: 0;
 }
 #rightBar h1{
@@ -77,13 +181,15 @@ body{
 	left:10%;
 }
 .message{
+	overflow: hidden;
+
 	padding: 5%;
 	position: absolute;
 	top:10%;
 	left:10%;
     height:60%;
     width: 80%;
-	border: 2px solid #fff;
+    background-color: #666;
 }
 #rightBar p{
 	color: #fff;
@@ -93,19 +199,27 @@ body{
 	margin-top: 10%;
 }
 
-#signIn{
+#logIn{
 	width: 20%;
 	position: absolute;
 	top:80%;
 	left:20%;
-
+	transition:.5s;
+}
+#logIn:hover{
+	width:30%;
+	left:15%;
 }
 #signUp{
 	width: 20%;
 	position: absolute;
 	top:80%;
 	left:55%;
-
+	transition:.5s;
+}
+#signUp:hover{
+	width:30%;
+	left:50%;
 }
 
 /*copyRight*/
@@ -133,6 +247,22 @@ form label{
 }
 #submit{
 	margin-top: 20px;
+	width:100%;
+	font-weight: bold;
+}
+.modal input{
+	
+    border: 1px solid #999;                
+    padding: 2px 2px 2px 9%;/*名称输入框*/ 
+
+}
+#username{
+    background:url(../images/envelope.jpg) no-repeat; 
+    background-size: 9%;
+}
+#password{
+	background:url(../images/key.png) no-repeat; 
+    background-size: 9%;
 }
 
 
@@ -163,8 +293,8 @@ form label{
 #leftBar2{
 	
 	position:absolute;
-    top:20%;
-    left:15%;
+    top:15%;
+    left:65%;
 	width: 25%;
 	height:70%;
 }
@@ -178,10 +308,9 @@ form label{
 	padding: auto;
 	font-size: auto;
 }
-#up2 h1{
+#up2 h3{
 	margin: 0 auto;
 	color:#fff;
-	font-size: 200%;
 }
 #down2{
 	padding: 5%;
@@ -198,8 +327,8 @@ form label{
 /*rightBar 2*/
 #rightBar2{
 	position: absolute;
-	left:42%;
-	top:20%;
+	left:15%;
+	top:15%;
 	width:43%;
 	height:70%;
 }
@@ -207,23 +336,47 @@ form label{
 	position: absolute;
 	top:0%;
 	border:2px solid #fff;
-	height:30%;
+	height:20%;
 	width:100%;
 }
 #form{
 	position: absolute;
-	top:40%;
+	top:25%;
 	border:2px solid #fff;
-	height:60%;
+	height:80%;
 	width:100%;
 }
-form{
+#form{
 	padding:5%;
+	background: #fff;
 }
+
 #form input{
-	width:60%;
-	position: relative;
-	left:10%;
+  width:60%;
+  position: relative;
+  left:10%;
+  
+ 
+                   
+  padding: 4px 10px 4px 8%;/*名称输入框*/
+}
+#Name{
+	background: url(../images/user.png) no-repeat #fff;
+	background-size: 10%;
+}
+
+
+#Email{
+	background: url(../images/envelope.jpg) no-repeat #fff;
+	background-size: 11%;
+}
+#Password{
+	background: url(../images/key.png) no-repeat #fff;
+	background-size: 11%;
+}
+#Phone{
+	background: url(../images/phone.png) no-repeat #fff;
+	background-size: 10%;
 }
 #btns{
 	position: absolute;
@@ -231,5 +384,10 @@ form{
     left:30%;
     width:100%;
 }
-
+.btns{
+	text-align: center;
+	padding: 0;
+	width: 20px;
+	margin-top: 10%;
+}
 
